@@ -11,72 +11,75 @@
 
 ## Sobre o Desafio 🚀
 
-Desenvolver um módulo Magento 2 que consome uma API externa (pode ser um JSON mock) para exibir dados dinâmicos no checkout. 
-Por exemplo: "Prazo de entrega estimado com base no CEP" ou "Condições de pagamento dinâmicas".
+### Customização do Checkout com integração a API externa (GET + POST)
 
-Qualquer funcionalidade extra é bem vinda para agregar na solução básica proposta.
+Neste desafio, seu objetivo será customizar o **checkout do Magento 2**, utilizando o fallback do `Magento_Checkout`, criando **um componente Knockout.js** que consuma uma API externa com dados adicionais do cliente ou do pedido, e que envie um POST com informações no momento da finalização do pedido.
 
-O layout e por sua conta, seja criativo. O ideal é que seja criado um módulo contendo a rota para a sua custom page.
+Imagine que o cliente do e-commerce quer **integrar o checkout com uma solução externa de antifraude**, ou **registrar a tentativa de pedido em outro sistema**.
 
-Você será avaliado pela qualidade do código, pela modularidade, pela legibilidade, pela criatividade, pela quantidade de funcionalidades básicas e extra.
+---
 
-Não esqueça da otimização de velocidade e nem da experiência do usuário.
+### O que deve ser feito 🧩
 
-### Orientações 📌
-- Primeiramente, faça um fork e clone do projeto; 
-- Crie uma branch com o seu nome e sobrenome e depois instale configure o ambiente inicial;
-- Comite apenas o módulo criado.
-- Use qualquer versão do Magento, porém, não se esqueça de documentar qual foi usada.
-- Prazo de 2 dias para a entrega deste teste
-- Criar um módulo Magento 2 com estrutura completa
-- Usar RequireJS e um componente Knockout personalizado
-- Realizar chamada (fake ou real) a uma API externa
-- Tratar estados: carregando, sucesso, erro
-- Compartilhar dados usando observable global
-- Mostrar os dados em tempo real no checkout
+1. Criar um **componente Knockout.js**, adicionado via layout XML, que:
+   - Consulte uma API pública ou mockada (GET), por exemplo, para obter dados do CEP, IP, clima, ou dados genéricos;
+   - Exiba os dados em algum local do checkout (preferencialmente na etapa de pagamento ou antes da finalização);
+   - Ao clicar em "Finalizar Pedido", envie um POST para uma API externa com os dados do carrinho, usuário, ou dados processados no seu componente.
 
-### Critérios de avaliação ✔️
+2. Esse POST deve ocorrer de forma assíncrona **antes da criação final do pedido**, simulando a coleta de dados ou envio para um sistema de terceiros (mockar endpoint é permitido).
 
-**Entre os critérios de avaliação estão:**
+---
 
-- Usabilidade
-- Criatividade
-- Código limpo e organização
-- Documentação de código
-- Documentação do projeto (readme)
-- Performance
-- HTML escrito da maneira mais semântica possível
-- Arquitetura do módulo
-- Modularidade e reuso de código JS (ex: API helper)
-- Padrões Magento 2 e Knockout.js
-- UX da solução implementada
+### Requisitos Técnicos 📌
 
-**O que nos impressionaria:**
-- [BEM](https://getbem.com/naming/ "BEM")
-- Uma página bonita, criativa e obedecendo aos padrões Magento;
-- Sem bugs ou warnings;
-- Usar commits semânticos.
+- Utilizar o fallback de `Magento_Checkout` (`Magento_Checkout/js/view`).
+- Knockout.js: observar boas práticas de bind, observables e performance.
+- Layout XML para injetar o novo componente no passo de pagamento.
+- Pode usar uma API pública como [ViaCEP](https://viacep.com.br), [IPify](https://www.ipify.org/), [JsonPlaceholder](https://jsonplaceholder.typicode.com/), ou criar um mock no [Mocky.io](https://mocky.io).
+- Customizar o HTML exibido pelo componente, mantendo estilo compatível com o Magento 2 (Luma ou Blank).
+- Adicionar algum controle visual de estado (loading, erro, etc).
 
-**O que nós não gostaríamos:**
-- Descobrir que não foi você quem fez seu teste
-- Ver commits grandes, sem muita explicação nas mensagens em seu repositório
+---
 
-**O que avaliaremos de seu teste:**
-- Histórico de commits do git
-- As instruções de como rodar o projeto
-- Organização, semântica, estrutura, legibilidade, manutenibilidade do seu código
-- Alcance dos objetivos propostos
-- Adaptação mobile (layout responsivo)
+### Critérios de Avaliação ✔️
 
-### Tecnologias ⚙️
-Devem ser utilizadas as seguintes tecnologias 
+- Compreensão e domínio do fallback do checkout.
+- Correta manipulação de eventos de finalização de pedido (ex: interceptar `placeOrder` ou utilizar `beforePlaceOrder`).
+- Tratamento correto das respostas da API.
+- Boas práticas em Knockout.js e XML.
+- Separação e modularização do código (HTML, JS e templates).
+- Código limpo, legível, versionado com mensagens claras.
 
-* __Magento__;
-* __PHP__;
-* __CSS__;
-* __Javascript__;
-* __LESS__;
-* __Qualquer tecnologia e/ou padrão complementar são permitidas com as devidas justificativas no README__;
+---
+
+### O que você pode fazer para se destacar ⭐
+
+- Utilizar injeção de dependências corretamente (ex: `quote`, `customerData`, etc).
+- Aplicar validação visual no componente.
+- Mostrar estados de carregamento e erro de forma elegante.
+- Criar uma interface bonita e coerente com o Magento.
+- Fazer um README explicando a lógica de integração e como rodar o teste.
+
+---
+
+### Entrega e Instruções 📦
+
+- Crie um fork e uma branch com seu nome e sobrenome.
+- Comite apenas os arquivos criados/modificados no módulo de checkout (ex: layout XML, JS, templates).
+- Pode ser usado qualquer versão do Magento 2 (indique no README).
+- Prazo sugerido: 2 dias úteis para entrega.
+
+---
+
+### Tecnologias e Conceitos Utilizados 🧪
+
+- **Magento 2 (Checkout)**  
+- **Knockout.js**  
+- **JavaScript (ES6+)**  
+- **Layout XML**  
+- **Integração com API (fetch/AJAX)**  
+- **Tratamento assíncrono de dados**  
+- **Experiência do usuário no checkout**
 
 </br>
-**Boa Sorte** 🤞
+**Boa Sorte!** 🤞
