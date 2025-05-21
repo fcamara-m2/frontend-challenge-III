@@ -1,5 +1,5 @@
 <h3 align="center">
-  Desafio Front-End III
+  Desafio Front-End SR
 </h3>
 
 <h3 align="center">
